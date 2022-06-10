@@ -2,6 +2,8 @@ import { ChevronDownIcon } from "@heroicons/react/outline";
 import {useSession} from "next-auth/react";
 import { shuffle} from "lodash";
 import { useEffect, useState } from "react";
+import {playlistIdState} from "../atoms/playlistAtom";
+import { useRecoilValue } from "recoil";
 
 
 const colors = [
@@ -17,10 +19,11 @@ const colors = [
 function Center() {
     const {data: session} = useSession();
     const [color, setColor] = useState(null);
+    const playlistId = useRecoilValue(playlistIdState);
 
     useEffect(() => {
       setColor(shuffle(colors).pop());
-    }, []);
+    }, [playlistId]);
     
 
     return ( 
