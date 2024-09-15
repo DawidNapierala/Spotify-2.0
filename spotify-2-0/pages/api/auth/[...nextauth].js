@@ -1,7 +1,7 @@
 import NextAuth from "next-auth"
 import SpotifyProvider from "next-auth/providers/spotify"
-import { refreshAccessToken } from "spotify-web-api-node/src/server-methods"
-import { servicesVersion } from "typescript";
+//import { refreshAccessToken } from "spotify-web-api-node/src/server-methods"
+//import { servicesVersion } from "typescript";
 import spotifyApi,{ LOGIN_URL } from "../../../lib/spotify"
 
 async function refreshAccessToken(token) {
@@ -20,7 +20,7 @@ async function refreshAccessToken(token) {
             accessToken: refreshedToken.access_token,
             accessTokenExpires: Date.now + refreshedToken.expires_in * 1000,  // = 1 hour as 3600 returns from spotify api
 
-            refreshToken: refreshedToken.refreshToken ?? token.refreshToken,    //Replace if new one came back elese fall back to old refresh roken
+            refreshToken: refreshedToken.refresh_token ?? token.refreshToken,    //Replace if new one came back elese fall back to old refresh roken
         }
     } catch (error) {
         console.log(error)
@@ -57,7 +57,7 @@ export default NextAuth({
                   refreshToken: account.refresh_token,
                   username: account.providerAccountId,
                   accessTokenExpires: account.expires_at * 1000, 
-              }
+              };
           }
           if(Date.now() < token.accessTokenExpires){
               console.log("EXISTING ACCESS TOKEN IS VALID");
@@ -74,5 +74,5 @@ export default NextAuth({
 
           return session;
       }
-  }
-})
+  },
+});

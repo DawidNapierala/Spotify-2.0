@@ -3,20 +3,26 @@
   "scripts": {
     "dev": "next dev",
     "build": "next build",
-    "start": "next start"
+    "start": "next start",
+    "cypress": "cypress open"
   },
   "dependencies": {
     "@heroicons/react": "^1.0.6",
+    "loadash": "^1.0.0",
+    "lodash": "^4.17.21",
     "next": "latest",
     "next-auth": "^4.0.0-beta.7",
     "react": "^17.0.2",
     "react-dom": "^17.0.2",
-    "spotify-web-api-node": "^5.0.2"
+    "recoil": "^0.7.3",
+    "spotify-web-api-node": "^5.0.2",
+    "tailwind-scrollbar-hide": "^1.1.7"
   },
   "devDependencies": {
     "@types/node": "17.0.4",
     "@types/react": "17.0.38",
     "autoprefixer": "^10.4.0",
+    "cypress": "^10.1.0",
     "postcss": "^8.4.5",
     "prettier": "^2.5.1",
     "prettier-plugin-tailwindcss": "^0.1.1",
